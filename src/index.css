@@ -1,3 +1,22 @@
+:root {
+  --desktopWidth: 1440px;
+  --smallDesktopWidth: 1000px;
+  --tabletWidth: 700px;
+  --mobileWidth: 320px;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  scroll-behavior: smooth;
+  transition: 0.2s;
+}
+
+button {
+  cursor: pointer;
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -10,4 +29,69 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+.App-header {
+  -webkit-box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2);
+  -moz-box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2);
+  box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2);
+}
+
+.header-wrapper {
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  max-width: var(--desktopWidth);
+  height: 60px;
+}
+
+.header__logo {
+  margin: auto 0;
+  width: 50px;
+  height: 50px;
+  background-image: url(/public/images/icons8-logo50.png);
+}
+
+.nav {
+  height: 100%;
+}
+
+.nav__item {
+  width: 100px;
+  height: 100%;
+  background-color: #ffffff77;
+  border: none;
+}
+
+.nav__item:hover {
+  background-color: #3668d377
+}
+
+.App-body {
+  margin: 100px auto;
+  max-width: var(--desktopWidth);
+}
+
+.body-wrapper {
+  max-width: var(--desktopWidth);
+  border: 1px solid red;
+}
+
+.body-description {
+  display: flex;
+  padding: 10px;
+}
+
+.user-item {
+  display: flex;
+  padding: 10px;
+}
+
+.user-item:nth-child(odd) {
+  background-color: #3668d315;
+}
+
+.user-item-data {
+  width: 100%;
+  /* border: 1px solid red; */
 }
