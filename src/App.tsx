@@ -7,9 +7,9 @@ function App() {
       <header className="App-header">
         <Header />
       </header>
-      <body className="App-body">
+      <div className="App-body">
         <Body />
-      </body>
+      </div>
       <footer className="App-footer">
         footer
       </footer>

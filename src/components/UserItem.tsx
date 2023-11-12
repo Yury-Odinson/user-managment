@@ -1,38 +1,39 @@
-export const UserItem = () => {
+import { User } from "../tools/types"
+
+export const UserItem = (userProps: { user: User }) => {
 
     return (
         <div className="user-item">
             <div className="user-item-data data-lastName">
-                <span>mock</span>
+                <span>{userProps.user.lastName}</span>
             </div>
             <div className="user-item-data data-firstName">
-                <span>mock</span>
+                <span>{userProps.user.firstName}</span>
             </div>
             <div className="user-item-data data-email">
-                <span>mock</span>
+                <span>{userProps.user.email}</span>
             </div>
             <div className="user-item-data data-mac">
-                <span>mock</span>
+                <span>{userProps.user.macAddress}</span>
             </div>
             <div className="user-item-data data-firstIp">
-                <span>mock</span>
+                <span>{userProps.user.firstIp}</span>
             </div>
             <div className="user-item-data data-ipValue">
-                <span>lore</span>
+                <span>{userProps.user.ipValue}</span>
             </div>
             <div className="user-item-data data-gitea">
-                <span>mock</span>
+                <span>{userProps.user.gitea === true ? "true" : "false"}</span>
             </div>
             <div className="user-item-data data-vSphere">
-                <span>mock</span>
+                <span>{userProps.user.vSphere === true ? "true" : "false"}</span>
             </div>
             <div className="user-item-data data-jira">
-                <span>mock</span>
+                <span>{userProps.user.jira === true ? "true" : "false"}</span>
             </div>
             <div className="user-item-data data-wireGuard">
-                <span>mock</span>
+                <span>{userProps.user.wireGuardCfg}</span>
             </div>
         </div>
     )
-
 }

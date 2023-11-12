@@ -17,3 +17,7 @@ export type User = {
     wireGuardCfg: string,
     id: string
 }
+
+export type UserItemProps = {
+    
+}

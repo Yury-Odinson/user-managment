@@ -26,6 +26,10 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+ul,li {
+  list-style: none;
+}
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
@@ -74,7 +78,6 @@ code {
 
 .body-wrapper {
   max-width: var(--desktopWidth);
-  border: 1px solid red;
 }
 
 .body-description {
@@ -85,13 +88,30 @@ code {
 .user-item {
   display: flex;
   padding: 10px;
-}
-
-.user-item:nth-child(odd) {
-  background-color: #3668d315;
+  gap: 10px;
+  border-bottom: 1px solid #3668d377;
 }
 
 .user-item-data {
-  width: 100%;
-  /* border: 1px solid red; */
+  margin: 0 auto;
+  width: 220px;
+  word-wrap: break-word;
+  font-size: 14px;
+  
+}
+
+.data-lastName,
+.data-firstName {
+  width: 100px;
+}
+
+
+.data-ipValue {
+  width: 50px;
+}
+
+.data-gitea,
+.data-vSphere,
+.data-jira {
+  width: 50px;
 }
