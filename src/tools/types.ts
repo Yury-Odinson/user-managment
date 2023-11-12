@@ -1,3 +1,5 @@
+import { Dispatch, SetStateAction } from "react"
+
 export type Admin = {
     lastName: string,
     firstName: string,
@@ -18,6 +20,7 @@ export type User = {
     id: string
 }
 
-export type UserItemProps = {
-    
+export type ContextType = {
+    tab: string,
+    setTab: Dispatch<SetStateAction<string>>
 }
