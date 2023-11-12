@@ -1,15 +1,18 @@
-import { useEffect, useState } from "react"
-import { getUsers } from "../tools/data"
+import { useContext, useEffect, useState } from "react"
+import { getData } from "../tools/data"
 import { UserItem } from "./UserItem"
 import { User } from "../tools/types"
+import { DataContext } from "../tools/storage"
 
 export const Body = () => {
 
-    const [users, setUsers] = useState<any>([])
+    const [list, setList] = useState<any>([])
+
+    const tab = useContext(DataContext)
 
     useEffect(() => {
-        getUsers().then((users) => setUsers(users))
-    }, [])
+        getData(tab.tab).then((users) => setList(users))
+    }, [tab.tab])
 
     return (
         <div className="body-wrapper">
@@ -26,7 +29,7 @@ export const Body = () => {
                 <span className="user-item-data data-wireGuard">наличие wireGuard</span>
             </div>
 
-            {users.map((item: User) => (
+            {list.map((item: User) => (
                 <li key={item.id}>
                     <UserItem user={item} />
                 </li>
