@@ -1,12 +1,18 @@
+import { Tab, Tabs } from "@mui/material"
+import { useState } from "react"
+
 export const Header = () => {
+
+    const [tab, setTab] = useState("users")
+    console.log(tab)
     return (
         <div className="header-wrapper">
             <div className="header__logo" />
             <nav className="nav">
-                <button className="nav__item">home</button>
-                <button className="nav__item">some button 1</button>
-                <button className="nav__item">some button 2</button>
-                <button className="nav__item">some button 3</button>
+                <Tabs value={tab} >
+                    <Tab label="Users" value={"users"} onClick={() => setTab("users")} />
+                    <Tab label="Admins" value={"admins"} onClick={() => setTab("admins")} />
+                </Tabs>
             </nav>
         </div>
     )
