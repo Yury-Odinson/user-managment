@@ -8,12 +8,18 @@ import { Pagination } from "@mui/material"
 export const Body = () => {
 
     const [list, setList] = useState<User[]>([])
+    const [listPage, setListPage] = useState<User[][]>([])
+    const [pages, setPages] = useState<number>(1)
+    const [page, setPage] = useState<number>(1)
 
     const tab = useContext(DataContext)
 
     useEffect(() => {
-        getData(tab.tab).then((users) => setList(users))
-    }, [tab.tab])
+        getData(tab.tab).then((users) => {
+            setList(users)
+            splitData(list)
+        })
+    }, [tab.tab, pages])
 
     const splitData = (arr: User[]) => {
 
@@ -29,8 +35,21 @@ export const Body = () => {
             }
             result.push(childArr)
         }
+        setPages(result.length)
+        return setListPage(result)
+    }
 
-        return console.log(result)
+    const renderList = (page: number) => (
+        listPage.length > 0 && listPage[page - 1].map((item: User) => (
+            <li key={item.id}>
+                <UserItem user={item} />
+            </li>
+        ))
+    )
+
+    const handlerSetPage = (page: number) => {
+        setPage(page)
+        renderList(page)
     }
 
     return (
@@ -48,15 +67,11 @@ export const Body = () => {
                 <span className="user-item-data data-wireGuard">наличие wireGuard</span>
             </div>
 
-            <Pagination count={10} color="primary" />
+            <Pagination count={pages} color="primary" onChange={(e, value) => {
+                handlerSetPage(value)
+            }} />
 
-            <button onClick={() => splitData(list)}>test</button>
-
-            {list.map((item: User) => (
-                <li key={item.id}>
-                    <UserItem user={item} />
-                </li>
-            ))}
+            {renderList(page)}
 
         </div>
     )
