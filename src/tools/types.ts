@@ -3,7 +3,8 @@ import { Dispatch, SetStateAction } from "react"
 export type Admin = {
     lastName: string,
     firstName: string,
-    login: string, id: string
+    login: string, 
+    id: string
 }
 
 export type User = {

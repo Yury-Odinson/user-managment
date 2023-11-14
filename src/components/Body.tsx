@@ -7,19 +7,18 @@ import { Pagination } from "@mui/material"
 
 export const Body = () => {
 
-    const [list, setList] = useState<User[]>([])
-    const [listPage, setListPage] = useState<User[][]>([])
-    const [pages, setPages] = useState<number>(1)
-    const [page, setPage] = useState<number>(1)
+    const [listPage, setListPage] = useState<User[][]>([])  // data on the page
+    const [pages, setPages] = useState<number>(1)           // total pages
+    const [page, setPage] = useState<number>(1)             // current page
 
     const tab = useContext(DataContext)
 
     useEffect(() => {
         getData(tab.tab).then((users) => {
-            setList(users)
-            splitData(list)
+            setPage(1)
+            splitData(users)
         })
-    }, [tab.tab, pages])
+    }, [tab.tab])
 
     const splitData = (arr: User[]) => {
 
@@ -67,11 +66,13 @@ export const Body = () => {
                 <span className="user-item-data data-wireGuard">наличие wireGuard</span>
             </div>
 
-            <Pagination count={pages} color="primary" onChange={(e, value) => {
-                handlerSetPage(value)
-            }} />
-
             {renderList(page)}
+
+            <div className="body-pagination">
+                <Pagination count={pages} color="primary" onChange={(e, value) => {
+                    handlerSetPage(value)
+                }} />
+            </div>
 
         </div>
     )

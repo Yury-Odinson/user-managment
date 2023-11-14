@@ -26,7 +26,8 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-ul,li {
+ul,
+li {
   list-style: none;
 }
 
@@ -66,11 +67,13 @@ code {
 }
 
 .App-body {
-  margin: 100px auto;
+  margin: 20px auto;
   max-width: var(--desktopWidth);
 }
 
 .body-wrapper {
+  display: flex;
+  flex-direction: column;
   max-width: var(--desktopWidth);
 }
 
@@ -91,14 +94,13 @@ code {
   width: 220px;
   word-wrap: break-word;
   font-size: 14px;
-  
+
 }
 
 .data-lastName,
 .data-firstName {
   width: 100px;
 }
-
 
 .data-ipValue {
   width: 50px;
@@ -108,4 +110,8 @@ code {
 .data-vSphere,
 .data-jira {
   width: 50px;
+}
+
+.body-pagination {
+  margin: 20px auto;
 }
