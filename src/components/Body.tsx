@@ -2,27 +2,47 @@ import { useContext, useEffect, useState } from "react"
 import { getData } from "../tools/data"
 import { UserItem } from "./UserItem"
 import { User } from "../tools/types"
-import { DataContext } from "../tools/storage"
+import { DataContext, SearchContext } from "../tools/storage"
 import { Pagination } from "@mui/material"
 
 export const Body = () => {
 
+    const [list, setList] = useState<User[]>([])
     const [listPage, setListPage] = useState<User[][]>([])  // data on the page
     const [pages, setPages] = useState<number>(1)           // total pages
     const [page, setPage] = useState<number>(1)             // current page
+    const [searchValue, setSearchValue] = useState<string>("")
 
     const tab = useContext(DataContext)
+    const search = useContext(SearchContext)
 
     useEffect(() => {
         getData(tab.tab).then((users) => {
+            setList(users)
             setPage(1)
             splitData(users)
+            if (searchValue !== "") {
+                getSearchResult()
+            }
         })
-    }, [tab.tab])
+        
+        setSearchValue(search.searchValue)
+    }, [tab.tab, search.searchValue])
+
+
+    const getSearchResult = () => {
+        const result: any = []
+        list.filter((e: any) => {
+            if (e.lastName.indexOf(searchValue) > -1 || e.macAddress.indexOf(searchValue) > -1) {
+                result.push(e)
+            }
+            return splitData(result)
+        })
+    }
 
     const splitData = (arr: User[]) => {
 
-        const sizeArr = 25
+        const sizeArr = 20
         const result: User[][] = []
 
         for (let i = 0; i < arr.length; i += sizeArr) {

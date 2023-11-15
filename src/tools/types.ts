@@ -25,3 +25,8 @@ export type ContextType = {
     tab: string,
     setTab: Dispatch<SetStateAction<string>>
 }
+
+export type ContextSearch = {
+    searchValue: string,
+    setSearchValue: Dispatch<SetStateAction<string>>
+}
